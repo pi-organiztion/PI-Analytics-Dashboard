@@ -1,0 +1,74 @@
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+  color: black;
+  font-family: Roboto;
+  font-size: 100%;
+}
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1 {
+    color: black;
+    font-weight: bold;
+    font-size: 2.2em;
+    width: 10em;
+    max-width: 10em;
+}
+
+/* Header Stats Row
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.header-row {
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+#analytics-type {
+    font-size: 0.7em;
+}
+
+.stats {
+    flex: 1;
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.stat-block {
+    color: white;
+    padding: 1.1em 1em 0 0;
+    margin: 0 2em 0.5em 0;
+    font-size: 0.9em;
+    min-width: 12em;
+    height: 7em;
+    text-align: right;
+}
+
+.stat-block > span {
+    font-size: 2em;
+}
+   
+#stat-block-1 {
+    background-color: #082464;
+}
+
+#stat-block-2 {
+    background-color: #141C5C;
+}
+
+#stat-block-3 {
+    background-color: #211555;
+}
+
+#stat-block-4 {
+    background-color: #2E0E4E;
+}
+
+#stat-block-5 {
+    background-color: #3A0647;
+}
+
+/* Miscellaneous
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.main-break-line {
+    margin-bottom: 2%;
+}

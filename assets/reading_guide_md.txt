@@ -1,0 +1,29 @@
+# Reading Guide
+                      
+## About the Data:
+This data analysis is built using the Tasks Tab from the TED Dashboard. Note that if a task input has missing values or 
+is considered poorly submitted through the dashboard, it will be ignored to retain accurate analysis and quality.
+                      
+
+## Queue Time:
+Given as “Creation Time” - “Start Time” for a single task. Provides a general idea of how long a task has 
+to wait to be started at each work center.
+
+## Task Rollover:
+Rollover counts how often a task has to wait a specified period of time in the task queue before it is started by a driver.
+
+
+## Duration-Task Ratio:
+Given as “Total Time Drivers Spent in a Work Center Doing Tasks” / “Total Tasks Completed”. 
+Provides a general idea of how long a task takes to complete at a work center or how efficient drivers 
+are with their time completing tasks at the work center (used for comparisons).
+
+
+## Distance-Task Ratio:
+Given as “Total Distance Drivers Drove in a Work Center Doing Tasks” / “Total Tasks Completed”. 
+Provides a general idea of how far a driver has to drive to complete a task at a work center or how 
+efficient the work center is with driver routes to help facilitate task completion (used for comparisons).
+
+
+## Generate Report Button:
+Generates a summary report for all work centers and drivers.

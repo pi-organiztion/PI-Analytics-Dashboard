@@ -1,0 +1,30 @@
+/* Tab Containers
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.tabs {
+  width: 20%;
+}
+
+.modebar{
+      display: none;
+}
+
+
+/* Cell Options
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.option-bar {
+  margin-left: 5%;
+}
+
+.dropdown-break-line {
+  width: 90%;
+}
+
+
+/* Overview Options
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.overview-option {
+    color: white;
+    background-color: #1B6EBE;
+    border: 2px solid black;
+    font-size: 0.9em;
+}

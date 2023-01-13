@@ -1,0 +1,59 @@
+/* Driver Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.driver-grid-container {
+    display: grid;
+    padding: 1% 1% 1% 1%;
+    background-color: #EBEDF0;
+    width: 98%;
+    height: 40%;
+    gap: 1%;
+    grid-template-columns: 1fr 1fr 0.9fr 1.1fr;
+    grid-template-rows: 1fr 0.9fr 0.1fr;
+    grid-template-areas: 
+      "area-1 area-1 area-1 area-2"
+      "area-3 area-3 area-4 area-4"
+      "area-3 area-3 area-5 area-5";
+}
+
+
+/* Driver Grid Cells
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.driver-task-hist {
+    grid-area: area-1;
+    background-color: white;
+    border-width: 1%;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.driver-task-perc {
+    grid-area: area-2;
+    background-color: white;
+    border-width: 1%;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.driver-dist {
+    grid-area: area-3;
+    background-color: white;
+    border-width: 1%;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.driver-efficiency {
+    grid-area: area-4;
+    background-color: white;
+    border-width: 1%;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.driver-overview-options {
+    grid-area: area-5;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 3%;
+}
