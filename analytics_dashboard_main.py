@@ -48,6 +48,7 @@ app = Dash(__name__,
            external_stylesheets=external_stylesheets,
            update_title='Loading...')
 app.layout = layouts.create_app_layout(stat_block_values, reading_guide_md)
+server = app.server
 
 
 # Tab Selection Dash Functions
@@ -169,17 +170,30 @@ def show_top_10_tasks(lookback_period):
   options, value = driver_analytics.get_top_10_tasks_dropdown(tasks, end_date)
   return options, value
 
-@app.callback(Output('driver-dist-bars', 'figure'), 
+@app.callback(Output('driver-dur-bars', 'figure'), 
               Input('driver-task-select', 'value'),       
               Input('driver-lookback-period', 'value'))
-def show_driver_dist_bars(task_info, lookback_period):
+def show_driver_dur_bars(task_info, lookback_period):
   end_date = end_dates[lookback_period]
-  fig = driver_analytics.create_dist_bars(tasks,
+  fig = driver_analytics.create_dur_bars(tasks,
                                           task_info,
                                           end_date,
                                           lookback_period,
                                           driver_colors)
   return fig
+
+@app.callback(Output('driver-dur-dist-bars', 'figure'), 
+              Input('driver-task-select', 'value'),       
+              Input('driver-lookback-period', 'value'))
+def show_driver_dist_bars(task_info, lookback_period):
+  end_date = end_dates[lookback_period]
+  fig = driver_analytics.create_dur_dist_bars(tasks,
+                                              task_info,
+                                              end_date,
+                                              lookback_period,
+                                              driver_colors)
+  return fig
+
 
 @app.callback(Output('driver-efficiency-table', 'data'),
               Output('driver-efficiency-table', 'columns'),
@@ -201,11 +215,6 @@ def show_driver_task_pi(lookback_period):
 
 
 # Reading Guide Dash Functions
-@app.callback(Output('wc-rg-open-button', 'n_clicks'),
-              Input('wc-rg-close-button', 'n_clicks'))
-def close_wc_reading_guide(n_clicks_close):
-  return 0
-
 @app.callback(Output('wc-rg-popup', 'style'),
               Input('wc-rg-open-button', 'n_clicks'))
 def show_wc_reading_guide(n_clicks_open):
@@ -213,9 +222,9 @@ def show_wc_reading_guide(n_clicks_open):
     return {"display": "block"}
   return {"display": "none"}
 
-@app.callback(Output('driver-rg-open-button', 'n_clicks'),
-              Input('driver-rg-close-button', 'n_clicks'))
-def close_driver_reading_guide(n_clicks_close):
+@app.callback(Output('wc-rg-open-button', 'n_clicks'),
+              Input('wc-rg-close-button', 'n_clicks'))
+def close_wc_reading_guide(n_clicks_close):
   return 0
 
 @app.callback(Output('driver-rg-popup', 'style'),
@@ -224,6 +233,11 @@ def show_driver_reading_guide(n_clicks_open):
   if n_clicks_open > 0:
     return {"display": "block"}
   return {"display": "none"}
+
+@app.callback(Output('driver-rg-open-button', 'n_clicks'),
+              Input('driver-rg-close-button', 'n_clicks'))
+def close_driver_reading_guide(n_clicks_close):
+  return 0
 
 
 # Run Dash Application

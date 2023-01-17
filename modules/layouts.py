@@ -261,9 +261,10 @@ def create_driver_tab():
                     responsive=True)
         ]),
 
-        html.Div(className='driver-dist', children=[
-          dcc.Graph(id='driver-dist-bars',
-                    style={'height': '84%'},
+        html.Div(className='driver-dur-dist', children=[
+          dcc.Graph(id='driver-dur-dist-bars',
+                    style={'height': '84%',
+                           'width': '100%'},
                     config={'responsive': True},
                     responsive=True),
           html.Hr(className='dropdown-break-line'),
@@ -273,7 +274,7 @@ def create_driver_tab():
                          className='dropdown',
                          style={'display': 'inline-block', 
                                 'verticalAlign': 'middle',
-                                'width': '75%',
+                                'width': '65%',
                                 'margin-left': '2%'})
           ])
         ]),
@@ -299,7 +300,7 @@ def create_driver_tab():
                       id='driver-report-button',
                       style={'padding': '2% 1% 2% 1%'}),
           html.Div(className='overview-option',
-                   style={'width': '42%'},        
+                   style={'width': '59%'},        
                    children=[
                     html.P('Timeframe Selection:',
                             style={'display': 'inline-block',
