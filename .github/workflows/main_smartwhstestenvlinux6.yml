@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'SmartWhsTestEnvLinux6'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4FD6C8D286D14B13B4CF9EB7DEA11018 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_381321186717496AB84AC6EFAB32395F }}
