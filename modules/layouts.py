@@ -41,7 +41,7 @@ def create_app_layout(stat_block_values, reading_guide_md):
              id='tab-selection',
              value='Work Centers',
              colors={'border':'white',
-                     'primary': '#EBEDF0', 
+                     'primary': '#F9FAFB', 
                      'background': '#DADBDC'},
              children=[create_wc_tab(), create_driver_tab()]),
     
@@ -91,7 +91,7 @@ def create_wc_tab():
 
   wc_tab = (
     dcc.Tab(className='tab',
-            selected_style={'background-color': '#EBEDF0'},
+            selected_style={'background-color': '#F9FAFB'},
             label='Work Centers',
             value='Work Centers',
             children=[
@@ -239,11 +239,7 @@ def create_driver_tab():
     dcc.Tab(className='tab',
             label='Drivers',
             value='Drivers',
-            selected_style={'background-color': '#EBEDF0',
-                            'box-shadow': '1px 1px 0px #EBEDF0',
-                            'border-left': '1px solid lightgrey',
-                            'border-right': '1px solid lightgrey',
-                            'border-top': '3px solid #e36209'},
+            selected_style={'background-color': '#F9FAFB'},
             children=[
       html.Div(className='driver-grid-container', children=[
         
