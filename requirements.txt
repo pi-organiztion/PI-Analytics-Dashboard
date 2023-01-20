@@ -1,4 +1,6 @@
 # Refer to https://note.nkmk.me/en/python-pip-install-requirements/
-pandas
-numpy
 dash
+numpy
+pandas
+pyodbc
+
