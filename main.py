@@ -29,7 +29,6 @@ FROM TASK
 
 # Execute SQL querry and preprocess the tasks dataset
 tasks = pd.read_sql(query, cnxn)
-print(tasks)
 tasks = preprocessing.preprocess_task_data(tasks)
 
 # Load in Markdown File
