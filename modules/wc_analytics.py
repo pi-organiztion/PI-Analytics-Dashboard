@@ -103,9 +103,12 @@ def generate_stat_block_values(tasks):
                           .count()
                           .drop(current_month)
                           .mean())['Task No']
-  
-  stat_block_values  = [tasks_completed_today, tasks_currently_queued, tasks_completed_month,
-                        int(avg_tasks_per_day), int(avg_tasks_per_month)]  
+
+  stat_block_values  = [tasks_completed_today, 
+                        tasks_currently_queued, 
+                        tasks_completed_month,
+                        int(avg_tasks_per_day) if not np.isnan(avg_tasks_per_day) else 'Unavaliable', 
+                        int(avg_tasks_per_month) if not np.isnan(avg_tasks_per_month) else 'Unavaliable']  
   return stat_block_values 
 
 def create_task_bars(tasks,

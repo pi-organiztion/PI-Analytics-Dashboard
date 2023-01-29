@@ -23,8 +23,35 @@ cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='
 cursor = cnxn.cursor()
 
 query = """
-SELECT *
-FROM TASK
+SELECT t.TaskId             AS [Task #],
+       u.UserName           AS Driver,
+       f.ForkliftName       AS Forklift,
+       w.WorkcenterCode     AS Workcenter,
+       t.PartNo             AS [Part No],
+       CASE t.Status
+          WHEN 1 THEN 'Waiting'
+          WHEN 2 THEN 'In-Progress'
+          ELSE 'Completed'
+       END                  AS Status,
+       CASE t.taskType
+          WHEN 1 THEN 'F/G Put Away'
+          WHEN 2 THEN 'Replenishment'
+          WHEN 3 THEN 'Part Return'
+          WHEN 4 THEN 'FG Return'
+          WHEN 5 THEN 'Container Move'
+          ELSE ''
+       END                  AS Name, 
+       t.CreationTime       AS [Creation Time],
+       t.StartTime          AS [Start Time],
+       t.EndTime            AS [End Time],
+       t.Distance
+FROM Task t
+     INNER JOIN [User] u
+             ON t.AssignUserId = u.UserId
+     INNER JOIN Workcenter w
+             ON t.WorkcenterKey = w.WorkcenterKey
+     LEFT JOIN Forklift f
+            ON t.TagId = f.TagId
 """
 
 # Execute SQL querry and preprocess the tasks dataset

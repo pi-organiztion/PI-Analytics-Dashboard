@@ -10,9 +10,6 @@ Functions:
                     driver_colors):
     Creates a line chart containing the total tasks completed by each driver each day.
 
-  _sort_driver_names(df):
-    Sorts work center names.
-
   get_top_10_tasks_dropdown(tasks, end_date):
     Gets the top 10 most common tasks for the HTML dropdown selection.
 
@@ -111,13 +108,6 @@ def create_task_lines(tasks, end_date, lookback_period, driver_colors):
                     autosize=True)
   fig.update_yaxes(gridcolor='#808080')
   return fig
-
-def _sort_driver_names(df):
-  """Sorts work center names."""
-  df['Driver No'] = df['Driver'].apply(lambda x: int(re.search(r'[0-9]+', x)[0]))
-  df = (df.sort_values('Driver No')
-          .drop('Driver No', axis=1))
-  return df
 
 def get_top_10_tasks_dropdown(tasks, end_date):
   """Gets the top 10 most common tasks for the HTML dropdown selection."""
@@ -266,10 +256,10 @@ def create_task_pi(tasks,
                     font_family='Roboto',
                     font_color='black',
                     legend={'title':'Task Types',
-                            'yanchor': 'top',
-                            'y': 0.15,
-                            'xanchor': 'left',
-                            'x': -0.1})
+                            'yanchor': 'bottom',
+                            'y': 0.1,
+                            'xanchor': 'right',
+                            'x': 2.0})
   return fig
 
 def create_efficiency_table(tasks, end_date):
@@ -307,6 +297,5 @@ def create_efficiency_table(tasks, end_date):
 
     driver_table.append([count_df.iloc[idx]['Driver'], tasks_by_driver, dur_task_ratio, dist_task_ratio])
 
-  driver_table = pd.DataFrame(driver_table, columns=['Driver', 'Total Tasks', 'Duration-Task Ratio', 'Distance-Task Ratio'])
-  driver_table = _sort_driver_names(driver_table)
+  driver_table = pd.DataFrame(driver_table, columns=['Driver', 'Total Tasks', 'Duration-Task Ratio', 'Distance-Task Ratio']).sort_values('Driver')
   return driver_table

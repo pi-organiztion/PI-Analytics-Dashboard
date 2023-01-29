@@ -281,9 +281,7 @@ def create_driver_tab():
                                sort_action='native',
                                style_table={'height': '400px',
                                             'maxHeight': '450px',
-                                            'overflowY': 'auto'},
-                               page_count=5,
-                               page_size=5)
+                                            'overflowY': 'auto'})
         ]),
               
         html.Div(className='driver-overview-options', children=[

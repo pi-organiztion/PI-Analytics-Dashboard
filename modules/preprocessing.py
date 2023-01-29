@@ -40,8 +40,7 @@ def preprocess_task_data(tasks):
   tasks = tasks.dropna().reset_index(drop=True)
 
   # Rename Columns
-  new_col_names = {'Duration (m:s)': 'Duration',
-                   'Task #': 'Task No',
+  new_col_names = {'Task #': 'Task No',
                    'Name': 'Task Type',
                    'Workcenter': 'Work Center'}
   tasks = tasks.rename(columns=new_col_names, errors='raise')
@@ -49,8 +48,10 @@ def preprocess_task_data(tasks):
   # Remove Part Return Tasks 
   tasks = tasks[tasks['Task Type'] != 'Part Return']
 
-  # Duration given as a string "minutes:seconds", need to convert to seconds
-  tasks['Duration'] = tasks['Duration'].apply(_convert_ms_to_s)
+  # Create Duration Column
+  tasks['Duration'] = ((tasks['End Time'] - tasks['Start Time'])
+                        .dt.total_seconds()
+                        .astype('int64'))
 
   # Change Creation Time, Start Time, and End Time columns to datetime columns
   col_times = ['Creation Time', 'Start Time', 'End Time']
