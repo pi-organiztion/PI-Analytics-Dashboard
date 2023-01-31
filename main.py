@@ -3,6 +3,16 @@
 import pandas as pd
 from dash import Dash, Input, Output
 from modules import preprocessing, wc_analytics, driver_analytics, layouts
+import json
+import os
+
+#appsettings default values
+appsettings_config = {'port':8050}
+# Load in the SQL Config
+appsettings_config_fp = './configs/appsettings.json'
+if os.path.exists(appsettings_config_fp):
+  with open(appsettings_config_fp, 'r') as file:
+    appsettings_config = json.load(file)
 
 # Load in the Tasks Dataset
 task_fp = './tasks/tasks.csv'
@@ -242,4 +252,4 @@ def close_driver_reading_guide(n_clicks_close):
 
 # Run Dash Application
 if __name__ == "__main__":
-  app.run_server(debug=False)
+  app.run_server(port=appsettings_config['port'],debug=False)
