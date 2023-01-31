@@ -27,6 +27,7 @@ h1 {
 .header-row {
     display: inline-flex;
     justify-content: space-evenly;
+    width: 100%;
 }
 
 #analytics-type {
@@ -72,8 +73,16 @@ h1 {
 #stat-block-5 {
     background-color: #3A0647;
 }
-
-
+.header-row .right
+{
+   flex:1;
+}
+.header-row .real-time-data
+{
+    text-align:right;
+    padding-right:20px;
+    align-self: center;
+}
 /* Miscellaneous
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .main-break-line {

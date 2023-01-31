@@ -57,7 +57,7 @@ app = Dash(__name__,
            meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
            external_stylesheets=external_stylesheets,
            update_title='Loading...')
-app.layout = layouts.create_app_layout(stat_block_values, reading_guide_md)
+app.layout = layouts.create_app_layout(appsettings_config,stat_block_values, reading_guide_md)
 server = app.server
 
 
