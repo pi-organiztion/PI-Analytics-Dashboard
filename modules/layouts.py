@@ -82,7 +82,7 @@ def create_stat_block_header(appsettings_config,stat_block_values):
     ])
   )
   if appsettings_config.get('realTimeDataAPPURL') is not None:
-    stat_block_header.children.append(html.A('Real Time Data',href=appsettings_config['realTimeDataAPPURL'],target='_blank', className='right real-time-data'))
+    stat_block_header.children.append(html.A('Real Time Data',href=appsettings_config['realTimeDataAPPURL'], className='right real-time-data'))
   else:
     stat_block_header.children.append(html.Div(className='right'))
   return stat_block_header
