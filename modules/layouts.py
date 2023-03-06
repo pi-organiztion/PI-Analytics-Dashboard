@@ -66,7 +66,7 @@ def create_stat_block_header(appsettings_config,stat_block_values):
 
   stat_block_header = (
     html.Div(className='header-row', children=[
-        html.H1(["Kumi", html.Br(), html.Span(id='analytics-type')]),
+        html.H1(["Smart Warehouse", html.Br(), html.Span(id='analytics-type')]),
         html.Div(className='stats', children=[
           html.Div(className='stat-block', id='stat-block-1', children=[
             html.Span(f"{stat_block_values[0]}"), html.Br(), "Tasks Completed Today"]),                                      
