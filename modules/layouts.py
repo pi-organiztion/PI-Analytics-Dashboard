@@ -19,10 +19,11 @@ Functions:
 
 from dash import dcc, html, dash_table
 
-def create_app_layout(stat_block_values, reading_guide_md):
+def create_app_layout(appsettings_config,stat_block_values, reading_guide_md):
   """Creates the HTML structure of the analytics dashboard application layout.
   
   Args:
+    appsettings_config: Values in configs/appsettings.json
     stat_block_values: A list of stat block values to display in the header.
     reading_guide_md: A string markdown that describes how to use and read 
                       the analytics dashboard.
@@ -34,7 +35,7 @@ def create_app_layout(stat_block_values, reading_guide_md):
   """
 
   app_layout = html.Div(
-    [create_stat_block_header(stat_block_values),
+    [create_stat_block_header(appsettings_config,stat_block_values),
     html.Hr(className='main-break-line'),
 
     dcc.Tabs(className='tabs',
@@ -51,10 +52,11 @@ def create_app_layout(stat_block_values, reading_guide_md):
   )
   return app_layout
 
-def create_stat_block_header(stat_block_values):
+def create_stat_block_header(appsettings_config,stat_block_values):
   """Creates the HTML structure of the header and its stat blocks.
   
   Args:
+    appsettings_config: Values in configs/appsettings.json
     stat_block_values: A list of stat block values to display in the header.
 
   Returns:
@@ -64,7 +66,7 @@ def create_stat_block_header(stat_block_values):
 
   stat_block_header = (
     html.Div(className='header-row', children=[
-      html.H1(["Kumi", html.Br(), html.Span(id='analytics-type')]),
+        html.H1(["Smart Warehouse", html.Br(), html.Span(id='analytics-type')]),
         html.Div(className='stats', children=[
           html.Div(className='stat-block', id='stat-block-1', children=[
             html.Span(f"{stat_block_values[0]}"), html.Br(), "Tasks Completed Today"]),                                      
@@ -76,9 +78,13 @@ def create_stat_block_header(stat_block_values):
             html.Span(f"{stat_block_values[3]}"), html.Br(), "Average Tasks Completed", html.Br(), "(per day)"]),       
           html.Div(className='stat-block', id='stat-block-5', children=[
             html.Span(f"{stat_block_values[4]}"), html.Br(), "Average Tasks Completed", html.Br(), "(per month)"])
-        ])
+        ])       
     ])
   )
+  if appsettings_config.get('realTimeDataAPPURL') is not None:
+    stat_block_header.children.append(html.A('Real Time Data',href=appsettings_config['realTimeDataAPPURL'],target='_blank', className='right real-time-data'))
+  else:
+    stat_block_header.children.append(html.Div(className='right'))
   return stat_block_header
 
 def create_wc_tab():
