@@ -1,3 +1,6 @@
+import datetime
+from modules import wc_data
+
 """Generates the HTML Structure for the Analytics Dashboard Layout using Dash.
 
 Functions:
@@ -19,6 +22,9 @@ Functions:
 
 from dash import dcc, html, dash_table
 
+def create_app_layout_reload():
+   data = wc_data.loadData()
+   return create_app_layout(data[0],data[1],data[2])
 def create_app_layout(appsettings_config,stat_block_values, reading_guide_md):
   """Creates the HTML structure of the analytics dashboard application layout.
   
@@ -33,7 +39,6 @@ def create_app_layout(appsettings_config,stat_block_values, reading_guide_md):
                 analytics dashboard. This dash.html.Div object will get assigned
                 app.layout.
   """
-
   app_layout = html.Div(
     [create_stat_block_header(appsettings_config,stat_block_values),
     html.Hr(className='main-break-line'),
